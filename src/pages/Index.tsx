@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { PlannerWizard } from '@/components/PlannerWizard';
 import { PlanResults } from '@/components/PlanResults';
-import { MapPin, Clock, TrendingUp, Coffee, Users, Star } from 'lucide-react';
+import { InteractiveStats } from '@/components/InteractiveStats';
+import { TrendingSection } from '@/components/TrendingSection';
+import { MapPin, Clock, TrendingUp, Coffee, Users, Star, Sparkles, Zap } from 'lucide-react';
 import heroImage from '@/assets/hero-cafe.jpg';
 
 interface WizardData {
@@ -73,62 +75,92 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-accent/80" />
         </div>
         
-        <div className="relative container mx-auto px-4 py-24 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Discover Your Perfect
-            <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Day Out
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            Compare prices, explore menus, and plan the perfect day with friends, dates, or solo adventures.
-          </p>
-          <Button 
-            size="lg" 
-            onClick={handleStartPlanning}
-            className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 rounded-full shadow-strong transition-all duration-300 hover:scale-105"
-          >
-            Start Planning Your Day
-          </Button>
+        <div className="relative container mx-auto px-4 py-32 text-center text-white">
+          <div className="animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight font-serif">
+              Discover Your Perfect
+              <span className="block bg-gradient-to-r from-white via-white/90 to-accent-foreground bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
+                Day Out
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90 leading-relaxed">
+              Compare prices, explore menus, and plan the perfect day with friends, dates, or solo adventures.
+              <span className="block mt-2 text-lg opacity-75">Join 10,000+ food lovers discovering amazing places daily.</span>
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                onClick={handleStartPlanning}
+                className="bg-white text-primary hover:bg-white/90 text-lg px-10 py-6 rounded-full shadow-strong transition-all duration-300 hover:scale-110 hover:shadow-xl font-semibold"
+              >
+                <Sparkles className="w-5 h-5 mr-2" />
+                Start Planning Your Day
+              </Button>
+              <Button 
+                variant="outline"
+                size="lg" 
+                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6 rounded-full transition-all duration-300"
+              >
+                <Zap className="w-5 h-5 mr-2" />
+                Explore Trending Spots
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Interactive Stats */}
+      <InteractiveStats 
+        initialStats={{
+          totalVenues: 150,
+          totalSaved: 2500,
+          avgSavings: 350,
+          happyUsers: 10247
+        }}
+      />
+
+      {/* Trending Section */}
+      <TrendingSection />
+
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-24 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose DayTrip Discover?</h2>
+          <div className="text-center mb-20 animate-fade-in">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Star className="w-6 h-6 text-accent animate-bounce-gentle" />
+              <h2 className="text-4xl md:text-5xl font-bold font-serif">Why Choose DayTrip Discover?</h2>
+            </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               We make it easy to find the perfect spots for any occasion, all in one place.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <TrendingUp className="w-8 h-8 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="text-center group animate-slide-up" style={{ animationDelay: '200ms' }}>
+              <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-medium">
+                <TrendingUp className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Smart Price Comparison</h3>
+              <h3 className="text-2xl font-semibold mb-4 font-serif">Smart Price Comparison</h3>
               <p className="text-muted-foreground">
                 Compare prices across multiple venues and get estimated costs for your entire day out.
               </p>
             </div>
 
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="w-8 h-8 text-white" />
+            <div className="text-center group animate-slide-up" style={{ animationDelay: '400ms' }}>
+              <div className="w-20 h-20 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-medium">
+                <MapPin className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Location-Based Results</h3>
+              <h3 className="text-2xl font-semibold mb-4 font-serif">Location-Based Results</h3>
               <p className="text-muted-foreground">
                 Find the best cafes and restaurants near your preferred locations with accurate distance calculations.
               </p>
             </div>
 
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Star className="w-8 h-8 text-white" />
+            <div className="text-center group animate-slide-up" style={{ animationDelay: '600ms' }}>
+              <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-medium">
+                <Star className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Curated Recommendations</h3>
+              <h3 className="text-2xl font-semibold mb-4 font-serif">Curated Recommendations</h3>
               <p className="text-muted-foreground">
                 Get personalized suggestions based on your occasion, whether it's a date, friends meetup, or solo time.
               </p>

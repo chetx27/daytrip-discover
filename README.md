@@ -89,18 +89,6 @@ npm start
 ```
 
 5. Open your browser and visit `http://localhost:3000`
-
----
-
-## 📋 Roadmap
-
-### 🔥 Coming Soon
-- [ ] 📱 Mobile app for iOS and Android
-- [ ] 🤖 AI-powered personalized recommendations
-- [ ] 🎫 Integrated booking system
-- [ ] 🌍 Multi-city trip planning
-- [ ] 👥 Social features and friend recommendations
-
 ---
 
 ## 🙏 Acknowledgments
